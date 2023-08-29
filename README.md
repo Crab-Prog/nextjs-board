@@ -36,3 +36,8 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## Gestion des erreurs
+La fonction Error prend en compte 2 paramètres, notamment `error` qui ne doit pas être utilisé en front pour afficher des informations mais uniquement pour le dev mode, car elle disparaît en production.
+Le deuxième paramèters est `reset` qui permet de relancer la page lorsqu'il n'y a plus de soucis, l'erreur s'enlève.
+
