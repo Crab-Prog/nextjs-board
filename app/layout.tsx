@@ -1,5 +1,7 @@
 import './globals.css'
 import Header from '~/src/components/Header';
+import { Providers } from '~/app/providers';
+import Navigation from '~/src/components/Navigation';
 
 export default function RootLayout({
                                      children,
@@ -16,7 +18,11 @@ export default function RootLayout({
 
     <body>
     <Header />
-    <div className="p-4 bg-gray-400">{children}</div>
+    <Navigation />
+    <div className="p-4 bg-gray-400">
+      {children}
+    </div>
+    <Providers />
     </body>
     </html>
   )

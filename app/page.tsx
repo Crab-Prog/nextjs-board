@@ -7,11 +7,10 @@ export default async function Home() {
   const boards = await prisma.board.findMany()
   return (
     <div className="flex flex-col">
-      <h1 className="text-5xl">Board list</h1>
-      {/*<Button as="a" href="/boards/new" className="self-end">*/}
-      {/*  Create board*/}
-      {/*</Button>*/}
+      <h2 className="text-3xl mb-4">Créer une nouvelle question: </h2>
       <BoardForm />
+      <hr className="my-8" />
+      <h2 className="text-3xl mb-8">Les propositions des participants:</h2>
       <ul>
         {boards.map((board) => (<BoardCard key={board.id} board={board} />))}
       </ul>
