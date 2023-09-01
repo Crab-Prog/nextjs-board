@@ -24,7 +24,7 @@ model Proposition {
   createdAt DateTime @default(now())
   ip        String
 
-  board   Board?  @relation(fields: [boardId], references: [id], onDelete: Cascade)
+  board   Board  @relation(fields: [boardId], references: [id])
   boardId Int
   vote    Vote[]
 

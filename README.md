@@ -34,3 +34,7 @@ On créé les routes dans le dossier app.<br>
 Par exemple, si on créé un dossier `boards/` dans lequel on a 2 autres dossiers `[boardId]` et `new` et qu'on ajoute des fichiers `page.tsx` pour chacun d'eux alors on aura:<br>
 On aura accès à 2 nouvelles routes par url `http://localhost:3000/boards/new` et `http://localhost:3000/boards/4` .<br>
 S'il n'y a pas ce fichier, alors le contenu ne sera pas disponible via le navigateur.
+
+## DB - PRISMA
+Pour envoyer les changements de la bdd `npx prisma db push`
+Faire une migration : `npx prisma migrate dev --name initial-state`
