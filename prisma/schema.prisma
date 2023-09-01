@@ -24,7 +24,7 @@ model Proposition {
   createdAt DateTime @default(now())
   ip        String
 
-  board   Board  @relation(fields: [boardId], references: [id])
+  board   Board?  @relation(fields: [boardId], references: [id], onDelete: Cascade)
   boardId Int
   vote    Vote[]
 
@@ -36,7 +36,7 @@ model Vote {
   createdAt DateTime @default(now())
   ip        String
 
-  proposition   Proposition @relation(fields: [propositionId], references: [id])
+  proposition   Proposition? @relation(fields: [propositionId], references: [id], onDelete: Cascade)
   propositionId Int
 
   @@unique([propositionId, ip])

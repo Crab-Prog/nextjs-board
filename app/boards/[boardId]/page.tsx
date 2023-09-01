@@ -43,7 +43,7 @@ const BoardPage = async ({ params, searchParams }: {
               <h3 className="font-bold">Les propositions sont : </h3>
               <ul className="flex gap-1">
                 {propositions.map((p) =>
-                  <Proposition key={p.id} voteCount={p._count.vote} {...p} />,
+                  <Proposition key={p.id} voteCount={p._count.vote} boardId={boardId} {...p} />,
                 )}
               </ul>
             </div>

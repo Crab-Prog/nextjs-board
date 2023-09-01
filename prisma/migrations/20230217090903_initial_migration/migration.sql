@@ -21,7 +21,7 @@ CREATE TABLE "Vote" (
     "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "ip" TEXT NOT NULL,
     "propositionId" INTEGER NOT NULL,
-    CONSTRAINT "Vote_propositionId_fkey" FOREIGN KEY ("propositionId") REFERENCES "Proposition" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+    CONSTRAINT "Vote_propositionId_fkey" FOREIGN KEY ("propositionId") REFERENCES "Proposition" ("id") ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 -- CreateIndex
