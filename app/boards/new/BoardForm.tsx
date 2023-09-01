@@ -1,5 +1,5 @@
 'use client'
-import { Button } from '~/src/components/form/Bouton';
+import { Button } from '~/src/components/form/Button';
 import { Input } from '~/src/components/form/Input';
 import { useRouter } from 'next/navigation';
 import { FormEvent } from 'react';
@@ -23,9 +23,9 @@ const BoardForm = () => {
       })
   }
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-2 w-1/2  mb-8">
-      <Input label="Title" name="title" />
-      <Button type="submit">Create board</Button>
+    <form onSubmit={handleSubmit} className="flex flex-col gap-2 w-1/2  mb-8 bg-gray-800 p-2">
+      <Input label="Ma question" name="title" />
+      <Button type="submit">Ajouter</Button>
     </form>
   );
 }

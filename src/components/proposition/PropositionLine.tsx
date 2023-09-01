@@ -14,10 +14,11 @@ export const Proposition = ({ title, id, voteCount, boardId }: PropositionLinePr
   const router = useRouter();
   const propositionId = id;
   return (
-    <div className="p-6 flex justify-between items-center rounded-lg shadow bg-gray-800 border-gray-700 gap-2 w-full">
+    <div className="p-6 flex justify-between items-center rounded-lg shadow bg-gray-800 border-gray-700 gap-2 w-50">
       <h5 className="text-2xl font-bold tracking-tight text-white">{title}</h5>
       <UpVote voteCount={voteCount} propositionId={id} />
       <button
+        className="bg-white p-2 rounded-sm hover:bg-gray-200"
         onClick={async (e) => {
           e.preventDefault()
           await fetch(`/api/boards/${boardId}/${propositionId}/deleteboard`, {

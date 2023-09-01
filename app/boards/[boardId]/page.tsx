@@ -1,13 +1,10 @@
-import React, { PropsWithChildren } from 'react';
+import React from 'react';
 import { prisma } from '~/src/db/prisma';
 import { notFound } from 'next/navigation';
 import { Proposition } from '~/src/components/proposition/PropositionLine';
 import PropositionForm from '~/app/boards/[boardId]/PropositionForm';
 
-const BoardPage = async ({ params, searchParams }: {
-  params: { boardId: string }
-  searchParams: { [key: string]: string | string[] | undefined }
-}) => {
+const BoardPage = async ({ params }: { params: { boardId: string } }) => {
   const boardId = Number(params.boardId)
 
   if (isNaN(boardId)) {
@@ -34,14 +31,14 @@ const BoardPage = async ({ params, searchParams }: {
     },
   })
   return (
-    <div className="p-4">
+    <div>
       <PropositionForm boardId={boardId} />
       {
         propositions.length > 0
           ? (
             <div>
-              <h3 className="font-bold">Les propositions sont : </h3>
-              <ul className="flex gap-1">
+              <h3 className="font-bold mb-4">Les propositions sont : </h3>
+              <ul className="flex flex-wrap gap-1">
                 {propositions.map((p) =>
                   <Proposition key={p.id} voteCount={p._count.vote} boardId={boardId} {...p} />,
                 )}
@@ -50,7 +47,6 @@ const BoardPage = async ({ params, searchParams }: {
           )
           : ''
       }
-
     </div>
   );
 }

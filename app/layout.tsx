@@ -2,16 +2,13 @@ import './globals.css'
 import Header from '~/src/components/Header';
 import { Providers } from '~/app/providers';
 import Navigation from '~/src/components/Navigation';
-import {
-  SidebarContext,
-  SidebarContextProvider,
-} from '~/app/context/Sidebar';
+import { SidebarContextProvider } from '~/app/context/Sidebar';
+import Login from '~/app/login/page';
 
-export default function RootLayout({
-                                     children,
-                                   }: {
+export default function RootLayout({ children }: {
   children: React.ReactNode
 }) {
+  const auth = false;
   return (
     <html lang="en">
     {/*
@@ -20,15 +17,18 @@ export default function RootLayout({
       */}
     <head />
 
-    <body>
-    <SidebarContextProvider>
-    <Header />
-    <Navigation />
-    <div className="p-4 bg-gray-400">
-      {children}
-    </div>
-    <Providers />
-    </SidebarContextProvider>
+    <body className="p-4 bg-gray-100 mb-4">
+    {auth ?
+      <SidebarContextProvider>
+        <Header />
+        <Navigation />
+        <div>
+          {children}
+        </div>
+        <Providers />
+      </SidebarContextProvider>
+      : <Login />
+    }
     </body>
     </html>
   )
