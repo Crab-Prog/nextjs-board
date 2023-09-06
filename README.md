@@ -38,3 +38,58 @@ S'il n'y a pas ce fichier, alors le contenu ne sera pas disponible via le naviga
 ## DB - PRISMA
 Pour envoyer les changements de la bdd `npx prisma db push`
 Faire une migration : `npx prisma migrate dev --name initial-state`
+
+## Material UI
+Il est possible d'ajouter Material UI, il faut installer:
+`npm i @emotion/react @emotion/server @emotion/styled @mui/material`
+
+- Créer un dossier "utils" dans lequel on va avoir la création de notre thème et l'utilisation d'Emotion cache pour extraire les styles pour le html.
+```tsx theme.tsx
+'use client';
+import { createTheme } from '@mui/material/styles';
+import { CssBaseline, ThemeProvider } from '@mui/material';
+import { CacheProvider } from '@emotion/react';
+import createEmotionCache from './createEmotionCache';
+export const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#fcba03',
+    },
+  },
+});
+
+const clientSideEmotionCache = createEmotionCache();
+
+export default function ThemeRegistry({ children,
+  emotionCache = clientSideEmotionCache, }) {
+  return (
+    <CacheProvider value={emotionCache}>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        {children}
+      </ThemeProvider>
+    </CacheProvider>
+  );
+}
+```
+
+```ts createEmotionCache.ts
+import createCache from "@emotion/cache";
+
+export default function createEmotionCache() {
+  return createCache({ key: "css", prepend: true });
+}
+```
+
+- Puis il faut bien ajouter le ThemeRegistry autour du body dans `layout.tsx`
+```tsx
+    <ThemeRegistry>
+      <body className={inter.className}>
+      {children}
+      </body>
+    </ThemeRegistry>
+```
+
+## API
+Il est possible de faire appel à une API supplémentaire en ajoutant les informations dans les variables d'environnement .env<br>
+Les variables doivent être déclarées de cette manière : `NEXT_PUBLIC_NAME=`
