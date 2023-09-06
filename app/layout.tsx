@@ -8,7 +8,7 @@ import Login from '~/app/login/page';
 export default function RootLayout({ children }: {
   children: React.ReactNode
 }) {
-  const auth = false;
+  const auth = true;
   return (
     <html lang="en">
     {/*
