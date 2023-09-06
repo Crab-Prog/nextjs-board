@@ -25,7 +25,7 @@ export default async function Home() {
         <h2 className="text-3xl mb-8">
           La liste des catégories de films qui proviennent de l'API du back
         </h2>
-        {data.map((category: Category) => <li key={category.id}>{category.name}</li>)}
+        {data.length > 0 && data.map((category: Category) => <li key={category.id}>{category.name}</li>)}
       </div>
     </div>);
 }
